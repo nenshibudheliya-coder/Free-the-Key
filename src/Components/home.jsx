@@ -4,6 +4,7 @@ export default function HomePage({ onStart }) {
     const [hover, setHover] = useState(false);
 
     // Some ambient animations using state if needed, but CSS is better
+    {/* leaf ni position, rotation, size ane speed store kari che.*/ }
     const leaves = [
         { top: "5%", left: "-2%", rot: -25, w: 60, h: 80, spd: 3.5, dl: 0 },
         { top: "2%", right: "-2%", rot: 40, w: 55, h: 72, spd: 4.2, dl: 0.5 },
@@ -49,13 +50,13 @@ export default function HomePage({ onStart }) {
                 </div>
             ))} */}
 
-            {/* Main Content */}
+            {/* Main Ui Content */}
             <div style={{
                 position: "relative", zIndex: 10, textAlign: "center", animation: "fadeInUp 0.8s ease-out",
                 display: "flex", flexDirection: "column", alignItems: "center", gap: "2vh"
             }}>
 
-                {/* Central Medallion */}
+                {/* Central Medallion Golden circle */}
                 <div style={{ position: "relative", width: "clamp(120px, 25vh, 220px)", height: "clamp(120px, 25vh, 220px)" }}>
                     <svg viewBox="0 0 100 100" style={{ width: "100%", height: "100%", animation: "medalRotate 30s linear infinite" }}>
                         <defs>
