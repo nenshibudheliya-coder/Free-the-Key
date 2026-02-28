@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { LEVELS } from "./free.jsx";
 
 const TOTAL_LEVELS = 32;
 const PER_PAGE = 12;
@@ -19,7 +20,6 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
         }}>
             <style>{`
                 @keyframes scaleIn { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
-                @keyframes floatSmall { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
             `}</style>
 
             {/* Background Texture Overlay */}
@@ -51,7 +51,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
                 alignContent: "center", zIndex: 10
             }}>
                 {levelsOnPage.map((lv) => {
-                    const isLocked = lv >= unlockedCount;
+                    const isLocked = lv >= unlockedCount || lv >= LEVELS.length;
                     return (
                         <LevelCard
                             key={lv}
