@@ -1,3 +1,5 @@
+{ /* HOME PAGE */ }
+
 import { useState, useEffect } from "react";
 
 export default function HomePage({ onStart }) {

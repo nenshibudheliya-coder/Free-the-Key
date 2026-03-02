@@ -1,3 +1,5 @@
+{ /* BORAD LEVELS PAGE */ }
+
 import { useState, useCallback, useEffect, useRef } from "react";
 
 const COLS = 6;
@@ -252,6 +254,50 @@ export const LEVELS = [
             { id: "j", row: 5, col: 3, length: 2, isHorizontal: true },
         ],
     },
+    {
+        level: 18,
+        pieces: [
+            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
+            { id: "b", row: 0, col: 1, length: 2, isHorizontal: true },
+            { id: "c", row: 1, col: 2, length: 3, isHorizontal: false },
+            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
+            { id: "e", row: 3, col: 3, length: 3, isHorizontal: true },
+            { id: "f", row: 5, col: 0, length: 3, isHorizontal: true },
+            { id: "g", row: 4, col: 4, length: 2, isHorizontal: false },
+        ],
+    },
+    {
+        level: 19,
+        pieces: [
+            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
+            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
+            { id: "b", row: 0, col: 1, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 3, length: 3, isHorizontal: false },
+            { id: "d", row: 3, col: 2, length: 2, isHorizontal: false },
+            { id: "e", row: 3, col: 3, length: 3, isHorizontal: true },
+            { id: "f", row: 5, col: 2, length: 3, isHorizontal: true },
+            { id: "g", row: 4, col: 5, length: 2, isHorizontal: false },
+        ],
+    },
+    {
+        level: 20,
+        pieces: [
+            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 2, length: 3, isHorizontal: false },
+            { id: "b", row: 0, col: 4, length: 2, isHorizontal: true },
+
+            { id: "c", row: 1, col: 5, length: 3, isHorizontal: false },
+            { id: "d", row: 3, col: 1, length: 3, isHorizontal: true },
+
+            { id: "e", row: 3, col: 4, length: 2, isHorizontal: false },
+            { id: "f", row: 4, col: 0, length: 2, isHorizontal: true },
+
+            { id: "g", row: 5, col: 2, length: 3, isHorizontal: true },
+        ]
+    },
+
 ];
 
 

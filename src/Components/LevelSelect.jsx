@@ -1,10 +1,14 @@
+{ /* LEVEL SELECT PAGE */ }
+
 import { useState } from "react";
 import { LEVELS } from "./free.jsx";
 
-const TOTAL_LEVELS = 32;
+// TOTAL_LEVELS is automatically taken from LEVELS array.
+// Jyare free.jsx ma navo level add karo, auto show thay — no manual change needed here.
+const TOTAL_LEVELS = LEVELS.length;
 const PER_PAGE = 12;
 
-export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
+export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, completedLevels = [] }) {
     const [page, setPage] = useState(0);
     const pageCount = Math.ceil(TOTAL_LEVELS / PER_PAGE);
 
@@ -30,7 +34,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
             }} />
 
             {/* Header */}
-            <div style={{ height: "15%", display: "flex", alignItems: "center", justifyContent: "center", width: "100%", zIndex: 10 }}>
+            <div style={{ height: "15%", display: "flex", alignItems: "center", justifyContent: "center", width: "100%", zIndex: 10, paddingTop: "55px" }}>
                 <h2 style={{
                     color: "#DAA520",
                     margin: 0,
@@ -39,7 +43,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
                     fontSize: "clamp(24px, 5vh, 42px)",
                     textShadow: "0 0 20px #DAA52044, 0 2px 4px #000"
                 }}>
-                    Select Expedition
+                    Select Levels
                 </h2>
             </div>
 
@@ -51,7 +55,9 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1 }) {
                 alignContent: "center", zIndex: 10
             }}>
                 {levelsOnPage.map((lv) => {
-                    const isLocked = lv >= unlockedCount || lv >= LEVELS.length;
+                    // Level 1 (lv=0) always unlocked.
+                    // Level N: locked jya sudhi Level N-1 complete na thay (strictly sequential).
+                    const isLocked = lv > 0 && !completedLevels.includes(lv - 1);
                     return (
                         <LevelCard
                             key={lv}
