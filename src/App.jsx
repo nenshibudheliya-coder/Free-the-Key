@@ -80,7 +80,6 @@ function App() {
           <FreeTheKey
             levelIdx={levelIdx}
             onHome={() => setScreen('levelSelect')}
-            onWin={() => handleWin(levelIdx)}
             onNext={() => {
               handleWin(levelIdx);
               if (levelIdx < LEVELS.length - 1) {
