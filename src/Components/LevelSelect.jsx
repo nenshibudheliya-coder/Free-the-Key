@@ -34,7 +34,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             }} />
 
             {/* Header */}
-            <div style={{ height: "15%", display: "flex", alignItems: "center", justifyContent: "center", width: "100%", zIndex: 10, paddingTop: "55px" }}>
+            <div style={{ height: "15%", display: "flex", alignItems: "center", justifyContent: "center", width: "100%", zIndex: 10, paddingTop: "clamp(85px, 10vh, 80px)" }}>
                 <h2 style={{
                     color: "#DAA520",
                     margin: 0,

@@ -297,6 +297,81 @@ export const LEVELS = [
             { id: "g", row: 5, col: 2, length: 3, isHorizontal: true },
         ]
     },
+    {
+        level: 21,
+        pieces: [
+            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
+            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
+            { id: "f", row: 2, col: 0, length: 3, isHorizontal: false },
+            { id: "g", row: 3, col: 1, length: 3, isHorizontal: true },
+            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },
+            { id: "i", row: 4, col: 3, length: 2, isHorizontal: false },
+            { id: "j", row: 2, col: 5, length: 3, isHorizontal: false },
+            { id: "k", row: 5, col: 4, length: 2, isHorizontal: true },
+        ]
+    },
+    {
+        level: 22,
+        pieces: [
+            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
+            { id: "d", row: 1, col: 2, length: 2, isHorizontal: false },
+            { id: "e", row: 2, col: 1, length: 2, isHorizontal: false },
+            { id: "f", row: 3, col: 0, length: 3, isHorizontal: false },
+            { id: "g", row: 5, col: 1, length: 2, isHorizontal: true },
+            { id: "h", row: 4, col: 3, length: 2, isHorizontal: false },
+            { id: "i", row: 1, col: 5, length: 3, isHorizontal: false },
+            { id: "j", row: 3, col: 3, length: 2, isHorizontal: true },
+            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
+            { id: "l", row: 5, col: 4, length: 2, isHorizontal: true },
+        ]
+    },
+    {
+        level: 23,
+        pieces: [
+            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "c", row: 1, col: 4, length: 2, isHorizontal: true },
+            { id: "d", row: 2, col: 1, length: 2, isHorizontal: false },
+            { id: "e", row: 2, col: 0, length: 2, isHorizontal: false },
+            { id: "f", row: 3, col: 2, length: 2, isHorizontal: true },
+            { id: "g", row: 2, col: 4, length: 2, isHorizontal: false },
+            { id: "h", row: 2, col: 5, length: 2, isHorizontal: false },
+            { id: "i", row: 5, col: 0, length: 2, isHorizontal: true },
+            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
+            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
+        ]
+    },
+    {
+        level: 24,
+        pieces: [
+            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 1, length: 2, isHorizontal: true },
+            { id: "b", row: 0, col: 3, length: 2, isHorizontal: true },
+            { id: "c", row: 1, col: 0, length: 2, isHorizontal: true },
+            { id: "d", row: 1, col: 2, length: 2, isHorizontal: true },
+            { id: "e", row: 1, col: 4, length: 3, isHorizontal: false },
+            { id: "f", row: 1, col: 5, length: 3, isHorizontal: false },
+            { id: "g", row: 2, col: 0, length: 3, isHorizontal: false },
+            { id: "h", row: 2, col: 1, length: 3, isHorizontal: false },
+            { id: "i", row: 3, col: 3, length: 2, isHorizontal: false },
+            { id: "j", row: 3, col: 2, length: 2, isHorizontal: false },
+            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
+            { id: "l", row: 5, col: 1, length: 2, isHorizontal: true },
+            { id: "m", row: 5, col: 3, length: 2, isHorizontal: true },
+        ]
+    }
 
 ];
 
