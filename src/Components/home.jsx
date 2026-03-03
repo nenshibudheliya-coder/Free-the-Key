@@ -70,7 +70,7 @@ export default function HomePage({ onStart }) {
                         </defs>
                         <circle cx="50" cy="50" r="45" fill="none" stroke="url(#medalGrad)" strokeWidth="4" />
                         <circle cx="50" cy="50" r="38" fill="none" stroke="url(#medalGrad)" strokeWidth="1" opacity="0.6" />
-                        <path d="M50 15 L55 35 L75 35 L60 48 L65 68 L50 55 L35 68 L40 48 L25 35 L45 35 Z" fill="url(#medalGrad)" />
+                        <path d="M50 15 L55 35 L75 35 L60 48 L65 68 L50 55 L35 68 L40 48 L25 35 L45 35 Z" fill="url(#medalGrad)" transform="translate(0, 8.5)" />
                         {/* Outer dashes */}
                         {Array.from({ length: 12 }).map((_, i) => (
                             <rect key={i} x="48" y="2" width="4" height="6" rx="1" fill="url(#medalGrad)" transform={`rotate(${i * 30} 50 50)`} />
