@@ -22,7 +22,7 @@ class ErrorBoundary extends Component {
 
 import HomePage from './Components/home.jsx'
 import LevelSelect from './Components/LevelSelect.jsx'
-import FreeTheKey from './Components/free.jsx'
+import FreeTheKey, { LEVELS } from './Components/free.jsx'
 import './App.css'
 
 function App() {
@@ -82,15 +82,11 @@ function App() {
             onHome={() => setScreen('levelSelect')}
             onWin={() => handleWin(levelIdx)}
             onNext={() => {
-              // Check BEFORE handleWin — is this a replay or first-time clear?
-              const isReplay = completedLevels.includes(levelIdx);
               handleWin(levelIdx);
-              if (isReplay) {
-                // Replay: Next level locked rakhvo — Level Select par moko
-                setScreen('levelSelect');
-              } else {
-                // First-time clear: next level unlock karo ane advance karo
+              if (levelIdx < LEVELS.length - 1) {
                 setLevelIdx(prev => prev + 1);
+              } else {
+                setScreen('levelSelect');
               }
             }}
           />
