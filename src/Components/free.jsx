@@ -371,6 +371,23 @@ export const LEVELS = [
             { id: "l", row: 5, col: 1, length: 2, isHorizontal: true },
             { id: "m", row: 5, col: 3, length: 2, isHorizontal: true },
         ]
+    },
+    {
+        level: 25,
+        pieces: [
+            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
+            { id: "e", row: 1, col: 0, length: 2, isHorizontal: false },
+            { id: "f", row: 1, col: 2, length: 2, isHorizontal: true },
+            { id: "g", row: 2, col: 1, length: 2, isHorizontal: false },
+            { id: "h", row: 2, col: 2, length: 3, isHorizontal: false },
+            { id: "i", row: 3, col: 3, length: 3, isHorizontal: true },
+            { id: "j", row: 5, col: 0, length: 2, isHorizontal: true },
+        ]
     }
 
 ];
