@@ -37,6 +37,7 @@ export const LEVELS = [
             { id: "e", row: 3, col: 0, length: 2, isHorizontal: true },
             { id: "f", row: 4, col: 2, length: 2, isHorizontal: false },
             { id: "g", row: 5, col: 3, length: 3, isHorizontal: true },
+
         ],
     },
     {
@@ -164,45 +165,50 @@ export const LEVELS = [
             { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
 
             { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 2, length: 3, isHorizontal: true },
-            { id: "c", row: 0, col: 5, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 4, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 2, length: 3, isHorizontal: true },
-            { id: "g", row: 4, col: 4, length: 2, isHorizontal: false },
-            { id: "h", row: 4, col: 2, length: 2, isHorizontal: true },
-        ],
+            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 5, length: 2, isHorizontal: false },
+            { id: "e", row: 1, col: 3, length: 2, isHorizontal: false },
+            { id: "f", row: 2, col: 5, length: 2, isHorizontal: false },
+            { id: "g", row: 3, col: 2, length: 2, isHorizontal: true },
+            { id: "h", row: 4, col: 3, length: 2, isHorizontal: false },
+        ]
     },
     {
         level: 12,
         pieces: [
             { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
 
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
+            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
             { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 1, length: 2, isHorizontal: true },
-            { id: "f", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "g", row: 5, col: 3, length: 3, isHorizontal: true },
-        ],
+            { id: "c", row: 0, col: 4, length: 2, isHorizontal: true },
+            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
+            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
+            { id: "f", row: 2, col: 4, length: 3, isHorizontal: false },
+            { id: "g", row: 2, col: 5, length: 2, isHorizontal: false },
+            { id: "h", row: 3, col: 0, length: 3, isHorizontal: false },
+            { id: "i", row: 3, col: 1, length: 3, isHorizontal: true },
+            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
+            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
+        ]
     },
     {
         level: 13,
         pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
+            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
 
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false }, // V1
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: true },  // H1
-            { id: "c", row: 1, col: 3, length: 2, isHorizontal: false }, // V2
-            { id: "d", row: 2, col: 4, length: 2, isHorizontal: false }, // V3
-            { id: "e", row: 1, col: 5, length: 3, isHorizontal: false }, // V4
-            // { id: "f", row: 3, col: 0, length: 3, isHorizontal: true },  // H2
-            { id: "g", row: 4, col: 2, length: 2, isHorizontal: false }, // V5
-            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },  // H3
-            { id: "i", row: 4, col: 3, length: 3, isHorizontal: true },  // H4
-            { id: "j", row: 5, col: 3, length: 3, isHorizontal: true },  // H5
-        ],
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
+            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
+            { id: "f", row: 2, col: 0, length: 3, isHorizontal: false },
+            { id: "g", row: 3, col: 1, length: 3, isHorizontal: true },
+            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },
+            { id: "i", row: 4, col: 3, length: 2, isHorizontal: false },
+            { id: "j", row: 2, col: 5, length: 3, isHorizontal: false },
+            { id: "k", row: 5, col: 4, length: 2, isHorizontal: true },
+        ]
     },
     {
         level: 14,
@@ -227,32 +233,37 @@ export const LEVELS = [
     {
         level: 15,
         pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
+            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
 
-            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 3, isHorizontal: false },
-            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "e", row: 3, col: 2, length: 2, isHorizontal: true },
-            { id: "f", row: 4, col: 1, length: 2, isHorizontal: false },
-            { id: "g", row: 5, col: 3, length: 3, isHorizontal: true },
-        ],
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "c", row: 1, col: 4, length: 2, isHorizontal: true },
+            { id: "d", row: 2, col: 1, length: 2, isHorizontal: false },
+            { id: "e", row: 2, col: 0, length: 2, isHorizontal: false },
+            { id: "f", row: 3, col: 2, length: 2, isHorizontal: true },
+            { id: "g", row: 2, col: 4, length: 2, isHorizontal: false },
+            { id: "h", row: 2, col: 5, length: 2, isHorizontal: false },
+            { id: "i", row: 5, col: 0, length: 2, isHorizontal: true },
+            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
+            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
+        ]
     },
     {
         level: 16,
         pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
+            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
 
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
             { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 4, length: 2, isHorizontal: false },
-            { id: "e", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "f", row: 3, col: 4, length: 2, isHorizontal: true },
-            { id: "g", row: 4, col: 0, length: 2, isHorizontal: true },
-            { id: "h", row: 5, col: 1, length: 3, isHorizontal: true },
-            { id: "i", row: 3, col: 3, length: 2, isHorizontal: false },
-        ],
+            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
+            { id: "e", row: 1, col: 0, length: 2, isHorizontal: false },
+            { id: "f", row: 1, col: 2, length: 2, isHorizontal: true },
+            { id: "g", row: 2, col: 1, length: 2, isHorizontal: false },
+            { id: "h", row: 2, col: 2, length: 3, isHorizontal: false },
+            { id: "i", row: 3, col: 3, length: 3, isHorizontal: true },
+            { id: "j", row: 5, col: 0, length: 2, isHorizontal: true },
+        ]
     },
     {
         level: 17,
@@ -319,24 +330,6 @@ export const LEVELS = [
     {
         level: 21,
         pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "f", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "g", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "i", row: 4, col: 3, length: 2, isHorizontal: false },
-            { id: "j", row: 2, col: 5, length: 3, isHorizontal: false },
-            { id: "k", row: 5, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 22,
-        pieces: [
             { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
 
             { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
@@ -354,25 +347,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 23,
-        pieces: [
-            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "c", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "d", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 2, length: 2, isHorizontal: true },
-            { id: "g", row: 2, col: 4, length: 2, isHorizontal: false },
-            { id: "h", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "i", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 24,
+        level: 22,
         pieces: [
             { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
 
@@ -392,24 +367,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 25,
-        pieces: [
-            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 1, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 1, col: 2, length: 2, isHorizontal: true },
-            { id: "g", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "h", row: 2, col: 2, length: 3, isHorizontal: false },
-            { id: "i", row: 3, col: 3, length: 3, isHorizontal: true },
-            { id: "j", row: 5, col: 0, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 26,
+        level: 23,
         pieces: [
             { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
 
@@ -427,7 +385,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 27,
+        level: 24,
         pieces: [
             { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
 
@@ -442,7 +400,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 28,
+        level: 25,
         pieces: [
             { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
 
@@ -456,7 +414,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 29,
+        level: 26,
         pieces: [
             { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
 
@@ -472,7 +430,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 30,
+        level: 27,
         pieces: [
             { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
 
@@ -486,7 +444,7 @@ export const LEVELS = [
 
     },
     {
-        level: 31,
+        level: 28,
         pieces: [
             { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
 
@@ -504,7 +462,7 @@ export const LEVELS = [
         ]
     },
     {
-        level: 32,
+        level: 29,
         pieces: [
             { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
 
@@ -517,11 +475,64 @@ export const LEVELS = [
             { id: "g", row: 3, col: 4, length: 2, isHorizontal: true },
             { id: "h", row: 4, col: 4, length: 2, isHorizontal: true },
             { id: "i", row: 5, col: 2, length: 3, isHorizontal: true },
-
         ]
 
     },
+    {
+        level: 30,
+        pieces: [
+            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
 
+            { id: "a", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "b", row: 0, col: 3, length: 2, isHorizontal: true },
+            { id: "c", row: 1, col: 1, length: 2, isHorizontal: false },
+            { id: "d", row: 2, col: 0, length: 2, isHorizontal: false },
+            { id: "e", row: 3, col: 1, length: 2, isHorizontal: true },
+            { id: "f", row: 4, col: 0, length: 3, isHorizontal: true },
+            { id: "g", row: 5, col: 0, length: 2, isHorizontal: true },
+            { id: "h", row: 2, col: 4, length: 2, isHorizontal: false },
+            { id: "i", row: 4, col: 4, length: 2, isHorizontal: false },
+
+        ]
+    },
+    {
+        level: 31,
+        pieces: [
+            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
+            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
+            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
+            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
+            { id: "e", row: 1, col: 5, length: 3, isHorizontal: false },
+            { id: "f", row: 2, col: 4, length: 2, isHorizontal: false },
+            { id: "g", row: 2, col: 0, length: 3, isHorizontal: false },
+            { id: "h", row: 3, col: 1, length: 3, isHorizontal: true },
+            { id: "i", row: 4, col: 1, length: 2, isHorizontal: false },
+            { id: "j", row: 4, col: 3, length: 2, isHorizontal: false },
+            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
+            { id: "l", row: 5, col: 4, length: 2, isHorizontal: true },
+        ]
+    },
+    {
+        level: 32,
+        pieces: [
+            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
+
+            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
+            { id: "b", row: 0, col: 3, length: 3, isHorizontal: true },
+            { id: "c", row: 1, col: 0, length: 2, isHorizontal: false },
+            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
+            { id: "e", row: 1, col: 4, length: 3, isHorizontal: false },
+            { id: "f", row: 2, col: 5, length: 2, isHorizontal: false },
+            { id: "g", row: 3, col: 0, length: 2, isHorizontal: false },
+            { id: "h", row: 3, col: 1, length: 3, isHorizontal: true },
+            { id: "i", row: 4, col: 2, length: 2, isHorizontal: false },
+            { id: "j", row: 5, col: 3, length: 2, isHorizontal: true },
+            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
+
+        ]
+    },
 ];
 
 
