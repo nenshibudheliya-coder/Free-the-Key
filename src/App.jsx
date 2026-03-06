@@ -87,7 +87,7 @@ function App() {
         </div>
         <h2 style={{ margin: "0 0 10px", fontSize: "20px", letterSpacing: "2px", fontWeight: "bold" }}>PORTRAIT MODE REQUIRED</h2>
         <p style={{ color: "#a87850", fontSize: "14px", maxWidth: "250px", lineHeight: "1.5" }}>
-          Please rotate your device to the temple's upright position to continue your expedition.
+          {/* Please rotate your device to the temple's upright position to continue your expedition. */}
         </p>
       </div>
 
