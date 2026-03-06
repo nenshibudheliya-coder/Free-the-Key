@@ -454,7 +454,7 @@ export const LEVELS = [
             { id: "d", row: 1, col: 3, length: 3, isHorizontal: false },
             { id: "e", row: 4, col: 0, length: 2, isHorizontal: false },
             { id: "f", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "g", row: 3, col: 4, length: 3, isHorizontal: true },
+            { id: "g", row: 3, col: 4, length: 2, isHorizontal: true },
             { id: "h", row: 3, col: 1, length: 2, isHorizontal: false },
             { id: "i", row: 4, col: 2, length: 2, isHorizontal: true },
             { id: "j", row: 5, col: 1, length: 3, isHorizontal: true },
