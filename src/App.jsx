@@ -62,6 +62,35 @@ function App() {
 
   return (
     <ErrorBoundary>
+      <style>{`
+        @media (max-width: 900px) and (orientation: landscape) {
+          .global-landscape-warning {
+            display: flex !important;
+          }
+        }
+      `}</style>
+
+      {/* Global Landscape Warning Overlay */}
+      <div className="global-landscape-warning" style={{
+        position: "fixed", inset: 0, zIndex: 9999,
+        background: "radial-gradient(circle at center, #2b1400 0%, #0d0500 100%)",
+        display: "none", flexDirection: "column",
+        alignItems: "center", justifyContent: "center",
+        textAlign: "center", padding: "20px", color: "#DAA520",
+        fontFamily: "Georgia, serif"
+      }}>
+        <div style={{ marginBottom: "20px", animation: "pulse 2s infinite" }}>
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+            <line x1="12" y1="18" x2="12.01" y2="18" />
+          </svg>
+        </div>
+        <h2 style={{ margin: "0 0 10px", fontSize: "20px", letterSpacing: "2px", fontWeight: "bold" }}>PORTRAIT MODE REQUIRED</h2>
+        <p style={{ color: "#a87850", fontSize: "14px", maxWidth: "250px", lineHeight: "1.5" }}>
+          Please rotate your device to the temple's upright position to continue your expedition.
+        </p>
+      </div>
+
       <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
         {screen === 'home' && (
           <HomePage onStart={() => setScreen('levelSelect')} />
