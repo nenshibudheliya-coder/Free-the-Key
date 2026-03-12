@@ -17,7 +17,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             height: "100%", width: "100%",
             background: "linear-gradient(135deg, #240a00 0%, #3d1a00 50%, #1a0800 100%)",
             display: "flex", flexDirection: "column", alignItems: "center",
-            fontFamily: "Georgia, serif", overflow: "hidden", userSelect: "none",
+            fontFamily: "Georgia, serif", overflow: "auto", userSelect: "none",
             position: "relative", boxSizing: "border-box",
             padding: "clamp(12px, 2vh, 24px) clamp(16px, 3vw, 40px)"
         }}>
@@ -134,8 +134,9 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             <div className="mobile-margin" style={{
                 display: "flex", gap: "clamp(12px, 2vw, 28px)",
                 alignItems: "center", zIndex: 10,
-                marginTop: "90px",
-                marginBottom: "clamp(10px, 2vh, 20px)",
+                marginTop: "auto",
+                paddingTop: "clamp(10px, 2vh, 20px)",
+                marginBottom: "clamp(14px, 2.5vh, 28px)",
                 flexShrink: 0
             }}>
                 <button
