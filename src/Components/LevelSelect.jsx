@@ -128,7 +128,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             <div style={{
                 display: "flex", gap: "clamp(12px, 2vw, 28px)",
                 alignItems: "center", zIndex: 10,
-                marginTop: "auto",
+                marginTop: "90px",
                 marginBottom: "clamp(10px, 2vh, 20px)",
                 flexShrink: 0
             }}>
