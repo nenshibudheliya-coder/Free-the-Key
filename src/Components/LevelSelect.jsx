@@ -62,6 +62,12 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                     background: #DAA52044; box-shadow: 0 0 12px #DAA52033;
                 }
                 .page-btn:disabled { opacity: 0.3; cursor: default; }
+
+                @media (max-width: 768px) {
+                    .mobile-margin {
+                        margin-top: 50px !important; /* Mobile view ma thoduk upar */
+                    }
+                }
             `}</style>
 
             {/* Background Pattern */}
@@ -125,7 +131,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             </div>
 
             {/* Pagination */}
-            <div style={{
+            <div className="mobile-margin" style={{
                 display: "flex", gap: "clamp(12px, 2vw, 28px)",
                 alignItems: "center", zIndex: 10,
                 marginTop: "90px",

@@ -922,6 +922,21 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                     filter: blur(20px); pointer-events: none;
                 }
                 * { box-sizing: border-box; }
+
+                @media (max-width: 480px) {
+                    .mobile-home-btn {
+                        position: absolute !important;
+                        top: 10px !important;
+                        left: 10px !important;
+                        z-index: 100;
+                    }
+                    .mobile-reset-btn {
+                        position: absolute !important;
+                        top: 10px !important;
+                        right: 10px !important;
+                        z-index: 100;
+                    }
+                }
             `}</style>
 
             {/* Header Header with Home, Stats, and Reset */}
@@ -934,7 +949,17 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                 marginBottom: isSmall ? 12 : 16,
                 zIndex: 50
             }}>
-                <Btn onClick={onHome} small={isSmall}>⇠ Home</Btn>
+                <span className="mobile-home-btn">
+                    <Btn onClick={onHome} small={isSmall}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            {/* Home */}
+                        </span>
+                    </Btn>
+                </span>
 
                 <div style={{ textAlign: "center", flex: 1 }}>
                     <p style={{
@@ -946,7 +971,17 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                     </p>
                 </div>
 
-                <Btn onClick={() => loadLevel(levelIdx)} small={isSmall}>↺ Reset</Btn>
+                <span className="mobile-reset-btn">
+                    <Btn onClick={() => loadLevel(levelIdx)} small={isSmall}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg>
+                            {/* Reset */}
+                        </span>
+                    </Btn>
+                </span>
             </div>
 
             {/* Temple border frame */}
