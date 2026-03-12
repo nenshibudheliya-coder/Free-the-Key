@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { LEVELS } from "./free.jsx";
+import "./LevelSelect.css";
 
 const TOTAL_LEVELS = LEVELS.length;
 const PER_PAGE = 12;
