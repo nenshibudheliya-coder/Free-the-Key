@@ -72,13 +72,24 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                 @media (max-width: 768px) {
                     .mobile-margin {
                         position: absolute !important;
-                        bottom: 110px !important;
-                        left: 50% !important;
-                        transform: translateX(-50%) !important;
+                        bottom: 80px !important;
+                        left: 0 !important;
+                        right: 0 !important;
+                        display: flex !important;
+                        justify-content: center !important;
+                        gap: 20px !important;
                         margin: 0 !important;
                     }
+                        
+                     /* 12-03 mobile view levels card center  set */   
+                    .grid-wrapper {
+                        padding-bottom: 60px !important;
+                    }
+                    .level-grid {
+                        max-width: 80vw !important;
+                    }
                 }
-                /* Tablet only: absolute position from bottom 12-03 */
+                /* 12-03 Tablet only: absolute position from bottom  */
                 @media (min-width: 769px) and (max-width: 1024px) {
                     .mobile-margin {
                         position: absolute !important;
@@ -88,10 +99,15 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                         margin: 0 !important;
                     }
                 }
-                /* Tablet Landscape: move buttons even higher 12-03 */
+                /* 12-03 Tablet Landscape: move buttons even higher  */
                 @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
                     .mobile-margin {
                         bottom: 120px !important;
+                    }
+                /* 12-03 Tablet Portrait: Bigger numbers  */
+                @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
+                    .level-num {
+                        font-size: clamp(28px, 5vw, 40px) !important;
                     }
                 }
             `}</style>
@@ -124,7 +140,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             </div>
 
             {/* Level Grid */}
-            <div style={{
+            <div className="grid-wrapper" style={{
                 flexGrow: 1,
                 display: "flex",
                 alignItems: "center",
@@ -257,7 +273,7 @@ function LevelCard({ num, locked, onClick }) {
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
                 ) : (
-                    <span style={{
+                    <span className="level-num" style={{
                         fontSize: "clamp(14px, 2vw, 26px)",
                         fontWeight: "bold",
                         color: hover ? "#FFF" : "#DAA520",
