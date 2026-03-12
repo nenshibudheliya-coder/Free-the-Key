@@ -68,6 +68,26 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                         margin-top: 15px !important;
                     }
                 }
+                /* Mobile only: absolute position from bottom */
+                @media (max-width: 768px) {
+                    .mobile-margin {
+                        position: absolute !important;
+                        bottom: 40px !important;
+                        left: 50% !important;
+                        transform: translateX(-50%) !important;
+                        margin: 0 !important;
+                    }
+                }
+                /* Tablet only: absolute position from bottom */
+                @media (min-width: 769px) and (max-width: 1024px) {
+                    .mobile-margin {
+                        position: absolute !important;
+                        bottom: 80px !important;
+                        left: 50% !important;
+                        transform: translateX(-50%) !important;
+                        margin: 0 !important;
+                    }
+                }
             `}</style>
 
             {/* Background Pattern */}
