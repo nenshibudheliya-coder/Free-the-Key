@@ -91,18 +91,16 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                 }} />
             </div>
 
-            {/* Level Grid — fills available space */}
+            {/* Level Grid */}
             <div
                 className="level-grid"
                 style={{
-                    flex: 1,
                     zIndex: 10,
                     /* 4 fixed columns: Row1→1-4, Row2→5-8, Row3→9-12 */
                     gridTemplateColumns: "repeat(4, minmax(clamp(60px, 7vw, 100px), 1fr))",
                     maxWidth: "clamp(280px, 48vw, 520px)",
                     alignSelf: "center",
-                    /* vertically center the grid rows */
-                    alignContent: "center",
+                    marginTop: "clamp(10px, 2vh, 30px)",
                 }}
             >
                 {levelsOnPage.map((lv) => {
@@ -122,7 +120,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             <div style={{
                 display: "flex", gap: "clamp(12px, 2vw, 28px)",
                 alignItems: "center", zIndex: 10,
-                marginTop: "clamp(10px, 2vh, 24px)",
+                marginTop: "clamp(30px, 4vh, 60px)",
                 flexShrink: 0
             }}>
                 <button
