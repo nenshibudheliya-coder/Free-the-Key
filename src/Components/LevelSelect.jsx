@@ -68,7 +68,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                         margin-top: 15px !important;
                     }
                 }
-                /* Mobile only: absolute position from bottom 12-03 */
+                /* 12-03 Mobile only: absolute position from bottom  */
                 @media (max-width: 768px) {
                     .mobile-margin {
                         position: absolute !important;
@@ -83,7 +83,7 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                         
                      /* 12-03 mobile view levels card center  set */   
                     .grid-wrapper {
-                        padding-bottom: 60px !important;
+                        padding-bottom: 100px !important;
                     }
                     .level-grid {
                         max-width: 80vw !important;
@@ -104,12 +104,21 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                     .mobile-margin {
                         bottom: 120px !important;
                     }
-                /* 12-03 Tablet Portrait: Bigger numbers  */
+                /* 12-03 Tablet Portrait: Bigger numbers & Center Grid */
                 @media (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
                     .level-num {
                         font-size: clamp(28px, 5vw, 40px) !important;
                     }
+
+                    /* 12-03 Tablet view levels card center  set */   
+                    .grid-wrapper {
+                        padding-bottom: 120px !important;
+                    }
+                    .level-grid {
+                        max-width: 80vw !important;
+                    }
                 }
+                   
             `}</style>
 
             {/* Background Pattern */}
