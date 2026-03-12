@@ -61,11 +61,11 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                 .page-btn:not(:disabled):hover {
                     background: #DAA52044; box-shadow: 0 0 12px #DAA52033;
                 }
-                .page-btn:disabled { opacity: 0.3; cursor: default; }
+                .page-btn:disabled { opacity: 0.55; cursor: default; filter: grayscale(0.3); }
 
                 @media (max-width: 768px) {
                     .mobile-margin {
-                        margin-top: 50px !important; /* Mobile view ma thoduk upar */
+                        margin-top: 15px !important; /* Mobile view ma upar */
                     }
                 }
             `}</style>
