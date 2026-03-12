@@ -964,7 +964,7 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                 <div style={{ textAlign: "center", flex: 1 }}>
                     <p style={{
                         color: "#A87850", margin: 0, fontSize: isSmall ? 15 : 16,
-                        letterSpacing: isSmall ? 2 : 4, textTransform: "uppercase",
+                        letterSpacing: isSmall ? 4 : 4, textTransform: "uppercase",
                         fontWeight: "bold"
                     }}>
                         Level {levelIdx + 1} &nbsp;•&nbsp; Moves: {moves}
