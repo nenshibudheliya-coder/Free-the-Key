@@ -68,24 +68,30 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
                         margin-top: 15px !important;
                     }
                 }
-                /* Mobile only: absolute position from bottom */
+                /* Mobile only: absolute position from bottom 12-03 */
                 @media (max-width: 768px) {
                     .mobile-margin {
                         position: absolute !important;
-                        bottom: 40px !important;
+                        bottom: 110px !important;
                         left: 50% !important;
                         transform: translateX(-50%) !important;
                         margin: 0 !important;
                     }
                 }
-                /* Tablet only: absolute position from bottom */
+                /* Tablet only: absolute position from bottom 12-03 */
                 @media (min-width: 769px) and (max-width: 1024px) {
                     .mobile-margin {
                         position: absolute !important;
-                        bottom: 80px !important;
+                        bottom: 110px !important;
                         left: 50% !important;
                         transform: translateX(-50%) !important;
                         margin: 0 !important;
+                    }
+                }
+                /* Tablet Landscape: move buttons even higher 12-03 */
+                @media (min-width: 769px) and (max-width: 1024px) and (orientation: landscape) {
+                    .mobile-margin {
+                        bottom: 120px !important;
                     }
                 }
             `}</style>
