@@ -18,7 +18,7 @@ const TempleLoading = () => (
 );
 
 import './App.css'
-import { LEVELS } from './Components/free.jsx' // Temporarily still here until moved
+import { LEVELS } from './data/levels.js' // Updated to direct import
 
 
 class ErrorBoundary extends Component {
@@ -89,7 +89,7 @@ function App() {
 
       {/* Global Landscape Warning Overlay */}
       <div className="global-landscape-warning" style={{
-        position: "fixed", inset: 0, zizeIndex: 9999,
+        position: "fixed", inset: 0, zIndex: 9999,
         background: "radial-gradient(circle at center, #2b1400 0%, #0d0500 100%)",
         display: "none", flexDirection: "column",
         alignItems: "center", justifyContent: "center",

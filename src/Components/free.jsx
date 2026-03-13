@@ -10,7 +10,7 @@ import { LEVELS } from "../data/levels.js";
 
 
 
-{/* board ma kai cell par kai piece che e batave che */ }
+/* board ma kai cell par kai piece che e batave che */
 function buildOccupied(pieces) {
     const occ = {};
     for (const p of pieces) {
@@ -23,9 +23,9 @@ function buildOccupied(pieces) {
     return occ;
 }
 
-{/* move karva devu ke nai e chech kare che */ }
+/* move karva devu ke nai e chech kare che */
 function canMove(piece, delta, pieces) {
-    const occ = buildOccupied(pieces); {/* call */ }
+    const occ = buildOccupied(pieces); /* call */
     for (let i = 0; i < piece.length; i++) {
         const r = piece.isHorizontal ? piece.row : piece.row + i;
         const c = piece.isHorizontal ? piece.col + i : piece.col;

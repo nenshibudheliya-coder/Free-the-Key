@@ -1,7 +1,7 @@
 /* LEVEL SELECT PAGE */
 
 import { useState } from "react";
-import { LEVELS } from "./free.jsx";
+import { LEVELS } from "../data/levels.js";
 import "./LevelSelect.css";
 
 const TOTAL_LEVELS = LEVELS.length;
