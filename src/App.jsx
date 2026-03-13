@@ -1,4 +1,25 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect, Component, lazy, Suspense } from 'react'
+
+const HomePage = lazy(() => import('./Components/home.jsx'));
+const LevelSelect = lazy(() => import('./Components/LevelSelect.jsx'));
+const FreeTheKey = lazy(() => import('./Components/free.jsx'));
+
+// Mini loading component for Suspense
+const TempleLoading = () => (
+  <div style={{ 
+    height: '100vh', width: '100vw', display: 'flex', alignItems: 'center', 
+    justifyContent: 'center', background: '#1c0800', color: '#DAA520',
+    fontFamily: 'Georgia, serif'
+  }}>
+    <div style={{ textAlign: 'center' }}>
+      <h2 style={{ letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>ENTERING TEMPLE...</h2>
+    </div>
+  </div>
+);
+
+import './App.css'
+import { LEVELS } from './Components/free.jsx' // Temporarily still here until moved
+
 
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -19,11 +40,6 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
-
-import HomePage from './Components/home.jsx'
-import LevelSelect from './Components/LevelSelect.jsx'
-import FreeTheKey, { LEVELS } from './Components/free.jsx'
-import './App.css'
 
 function App() {
   const [screen, setScreen] = useState('home'); // 'home' | 'levelSelect' | 'game'
@@ -63,6 +79,7 @@ function App() {
   return (
     <ErrorBoundary>
       <style>{`
+        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
         @media (max-width: 900px) and (orientation: landscape) {
           .global-landscape-warning {
             display: flex !important;
@@ -72,7 +89,7 @@ function App() {
 
       {/* Global Landscape Warning Overlay */}
       <div className="global-landscape-warning" style={{
-        position: "fixed", inset: 0, zIndex: 9999,
+        position: "fixed", inset: 0, zizeIndex: 9999,
         background: "radial-gradient(circle at center, #2b1400 0%, #0d0500 100%)",
         display: "none", flexDirection: "column",
         alignItems: "center", justifyContent: "center",
@@ -86,42 +103,43 @@ function App() {
           </svg>
         </div>
         <h2 style={{ margin: "0 0 10px", fontSize: "20px", letterSpacing: "2px", fontWeight: "bold" }}>PORTRAIT MODE REQUIRED</h2>
-        <p style={{ color: "#a87850", fontSize: "14px", maxWidth: "250px", lineHeight: "1.5" }}>
-          {/* Please rotate your device to the temple's upright position to continue your expedition. */}
-        </p>
+        <p style={{ color: "#a87850", fontSize: "14px", maxWidth: "250px", lineHeight: "1.5" }}></p>
       </div>
 
       <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
-        {screen === 'home' && (
-          <HomePage onStart={() => setScreen('levelSelect')} />
-        )}
+        <Suspense fallback={<TempleLoading />}>
+          {screen === 'home' && (
+            <HomePage onStart={() => setScreen('levelSelect')} />
+          )}
 
-        {screen === 'levelSelect' && (
-          <LevelSelect
-            onPlay={startLevel}
-            onBack={() => setScreen('home')}
-            unlockedCount={unlockedCount}
-            completedLevels={completedLevels}
-          />
-        )}
+          {screen === 'levelSelect' && (
+            <LevelSelect
+              onPlay={startLevel}
+              onBack={() => setScreen('home')}
+              unlockedCount={unlockedCount}
+              completedLevels={completedLevels}
+            />
+          )}
 
-        {screen === 'game' && (
-          <FreeTheKey
-            levelIdx={levelIdx}
-            onHome={() => setScreen('levelSelect')}
-            onNext={() => {
-              handleWin(levelIdx);
-              if (levelIdx < LEVELS.length - 1) {
-                setLevelIdx(prev => prev + 1);
-              } else {
-                setScreen('levelSelect');
-              }
-            }}
-          />
-        )}
+          {screen === 'game' && (
+            <FreeTheKey
+              levelIdx={levelIdx}
+              onHome={() => setScreen('levelSelect')}
+              onNext={() => {
+                handleWin(levelIdx);
+                if (levelIdx < LEVELS.length - 1) {
+                  setLevelIdx(prev => prev + 1);
+                } else {
+                  setScreen('levelSelect');
+                }
+              }}
+            />
+          )}
+        </Suspense>
       </div>
     </ErrorBoundary>
   )
 }
+
 
 export default App
