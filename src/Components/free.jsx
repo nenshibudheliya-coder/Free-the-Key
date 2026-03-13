@@ -1,4 +1,4 @@
-{ /* BORAD LEVELS PAGE */ }
+/* BOARD LEVELS PAGE */
 
 import { useState, useCallback, useEffect, useRef } from "react";
 
@@ -6,7 +6,7 @@ const COLS = 6;
 const ROWS = 6;
 const GAP = 3;
 
-{import { LEVELS } from "../data/levels.js";
+import { LEVELS } from "../data/levels.js";
 
 
 
@@ -70,7 +70,7 @@ const STONE_PALETTES = [
     { face: "#a87850", top: "#c89870", side: "#785030", crack: "#583020" },
 ];
 
-{ /* key icon */ }
+/* key icon */
 function KeySVGIcon({ size }) {
     const s = size || 32;
     return (
@@ -99,7 +99,7 @@ function KeySVGIcon({ size }) {
     );
 }
 
-{ /* stone block */ }
+/* stone block */
 function StoneBlockSVG({ piece, isActive, onPointerDown, cell }) {
     const CELL = cell;
     const w = piece.isHorizontal ? piece.length * CELL + (piece.length - 1) * GAP : CELL;

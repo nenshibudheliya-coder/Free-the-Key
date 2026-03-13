@@ -1,4 +1,4 @@
-{ /* LEVEL SELECT PAGE */ }
+/* LEVEL SELECT PAGE */
 
 import { useState } from "react";
 import { LEVELS } from "./free.jsx";
