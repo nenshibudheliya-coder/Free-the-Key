@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Component, lazy, Suspense } from 'react'
+import React, { useState, useEffect, Component } from 'react'
 
-const HomePage = lazy(() => import('./Components/home.jsx'));
-const LevelSelect = lazy(() => import('./Components/LevelSelect.jsx'));
-const FreeTheKey = lazy(() => import('./Components/free.jsx'));
+import HomePage from './Components/home.jsx';
+import LevelSelect from './Components/LevelSelect.jsx';
+import FreeTheKey from './Components/free.jsx';
 
-// Mini loading component for Suspense
+// Mini loading component (Kept for reference if needed elsewhere)
 const TempleLoading = () => (
   <div style={{
     height: '100vh', width: '100vw', display: 'flex', alignItems: 'center',
@@ -18,7 +18,7 @@ const TempleLoading = () => (
 );
 
 import './App.css'
-import { LEVELS } from './data/levels.js' // Updated to direct import
+import { LEVELS } from './data/levels.js'
 
 
 class ErrorBoundary extends Component {
@@ -107,39 +107,37 @@ function App() {
       </div>
 
       <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
-        <Suspense fallback={<TempleLoading />}>
-          {screen === 'home' && (
-            <HomePage onStart={() => setScreen('levelSelect')} />
-          )}
+        {/* Instant loading without Suspense */}
+        {screen === 'home' && (
+          <HomePage onStart={() => setScreen('levelSelect')} />
+        )}
 
-          {screen === 'levelSelect' && (
-            <LevelSelect
-              onPlay={startLevel}
-              onBack={() => setScreen('home')}
-              unlockedCount={unlockedCount}
-              completedLevels={completedLevels}
-            />
-          )}
+        {screen === 'levelSelect' && (
+          <LevelSelect
+            onPlay={startLevel}
+            onBack={() => setScreen('home')}
+            unlockedCount={unlockedCount}
+            completedLevels={completedLevels}
+          />
+        )}
 
-          {screen === 'game' && (
-            <FreeTheKey
-              levelIdx={levelIdx}
-              onHome={() => setScreen('levelSelect')}
-              onNext={() => {
-                handleWin(levelIdx);
-                if (levelIdx < LEVELS.length - 1) {
-                  setLevelIdx(prev => prev + 1);
-                } else {
-                  setScreen('levelSelect');
-                }
-              }}
-            />
-          )}
-        </Suspense>
+        {screen === 'game' && (
+          <FreeTheKey
+            levelIdx={levelIdx}
+            onHome={() => setScreen('levelSelect')}
+            onNext={() => {
+              handleWin(levelIdx);
+              if (levelIdx < LEVELS.length - 1) {
+                setLevelIdx(prev => prev + 1);
+              } else {
+                setScreen('levelSelect');
+              }
+            }}
+          />
+        )}
       </div>
     </ErrorBoundary>
   )
 }
-
 
 export default App
