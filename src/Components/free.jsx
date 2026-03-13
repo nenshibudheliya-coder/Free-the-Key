@@ -588,7 +588,7 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                         textAlign: "center",
                         boxShadow: "0 0 80px #DAA52055",
                         animation: "popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275), winGlow 2s ease-in-out infinite 0.5s",
-                        maxWidth: "85vw",
+                        maxWidth: "95vw",
                     }}>
                         <div style={{ fontSize: isSmall ? 36 : 48, marginBottom: 6 }}>
                             <KeySVGIcon size={isSmall ? 40 : 56} />

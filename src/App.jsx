@@ -6,13 +6,13 @@ const FreeTheKey = lazy(() => import('./Components/free.jsx'));
 
 // Mini loading component for Suspense
 const TempleLoading = () => (
-  <div style={{ 
-    height: '100vh', width: '100vw', display: 'flex', alignItems: 'center', 
+  <div style={{
+    height: '100vh', width: '100vw', display: 'flex', alignItems: 'center',
     justifyContent: 'center', background: '#1c0800', color: '#DAA520',
     fontFamily: 'Georgia, serif'
   }}>
     <div style={{ textAlign: 'center' }}>
-      <h2 style={{ letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>ENTERING TEMPLE...</h2>
+      {/* <h2 style={{ letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>ENTERING TEMPLE...</h2> */}
     </div>
   </div>
 );
