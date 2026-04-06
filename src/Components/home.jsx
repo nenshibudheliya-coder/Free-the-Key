@@ -1,4 +1,4 @@
-{ /* HOME PAGE */ }
+/* HOME PAGE */
 
 import { useState, useEffect } from "react";
 
@@ -6,7 +6,7 @@ export default function HomePage({ onStart }) {
     const [hover, setHover] = useState(false);
 
     // Some ambient animations using state if needed, but CSS is better
-    {/* leaf ni position, rotation, size ane speed store kari che.*/ }
+    /* leaf ni position, rotation, size ane speed store kari che.*/
     const leaves = [
         { top: "5%", left: "-2%", rot: -25, w: 60, h: 80, spd: 3.5, dl: 0 },
         { top: "2%", right: "-2%", rot: 40, w: 55, h: 72, spd: 4.2, dl: 0.5 },

@@ -1,7 +1,8 @@
-{ /* LEVEL SELECT PAGE */ }
+/* LEVEL SELECT PAGE */
 
 import { useState } from "react";
-import { LEVELS } from "./free.jsx";
+import { LEVELS } from "../data/levels.js";
+import "../css/LevelSelect.css";
 
 const TOTAL_LEVELS = LEVELS.length;
 const PER_PAGE = 12;
@@ -17,52 +18,11 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             height: "100%", width: "100%",
             background: "linear-gradient(135deg, #240a00 0%, #3d1a00 50%, #1a0800 100%)",
             display: "flex", flexDirection: "column", alignItems: "center",
-            fontFamily: "Georgia, serif", overflow: "hidden", userSelect: "none",
+            fontFamily: "Georgia, serif", overflow: "auto", userSelect: "none",
             position: "relative", boxSizing: "border-box",
             padding: "clamp(12px, 2vh, 24px) clamp(16px, 3vw, 40px)"
         }}>
-            <style>{`
-                @keyframes scaleIn { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
-                @keyframes subtleGlow { 0%,100%{opacity:0.08} 50%{opacity:0.15} }
 
-                /* Aztec pattern bg */
-                .ls-bg-pattern {
-                    position: absolute; inset: 0; pointer-events: none;
-                    background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 8 L48 32 L72 40 L48 48 L40 72 L32 48 L8 40 L32 32 Z' fill='none' stroke='%23DAA520' stroke-width='0.8'/%3E%3Ccircle cx='40' cy='40' r='10' fill='none' stroke='%23DAA520' stroke-width='0.4'/%3E%3C/svg%3E");
-                    background-size: clamp(50px, 6vw, 80px) clamp(50px, 6vw, 80px);
-                    animation: subtleGlow 4s ease-in-out infinite;
-                }
-
-                /* Responsive grid: adapts columns to available space */
-                .level-grid {
-                    display: grid;
-                    gap: clamp(10px, 1.5vw, 20px);
-                    width: 100%;
-                    align-content: center;
-                    justify-content: center;
-                }
-
-                /* Level card hover effects */
-                .level-card-inner {
-                    position: absolute; inset: 0;
-                    border-radius: clamp(8px, 1.2vw, 14px);
-                    display: flex; align-items: center; justify-content: center;
-                    transition: all 0.2s ease;
-                }
-
-                /* Pagination button */
-                .page-btn {
-                    padding: clamp(8px, 1vh, 14px) clamp(18px, 2.5vw, 32px);
-                    background: #DAA52022; border: 1.5px solid #DAA520;
-                    color: #DAA520; border-radius: 30px; cursor: pointer;
-                    font-family: Georgia, serif; font-size: clamp(12px, 1.4vh, 16px);
-                    letter-spacing: 2px; transition: all 0.2s;
-                }
-                .page-btn:not(:disabled):hover {
-                    background: #DAA52044; box-shadow: 0 0 12px #DAA52033;
-                }
-                .page-btn:disabled { opacity: 0.3; cursor: default; }
-            `}</style>
 
             {/* Background Pattern */}
             <div className="ls-bg-pattern" />
@@ -92,35 +52,45 @@ export default function LevelSelect({ onPlay, onBack, unlockedCount = 1, complet
             </div>
 
             {/* Level Grid */}
-            <div
-                className="level-grid"
-                style={{
-                    zIndex: 10,
-                    /* 4 fixed columns: Row1→1-4, Row2→5-8, Row3→9-12 */
-                    gridTemplateColumns: "repeat(4, minmax(clamp(60px, 7vw, 100px), 1fr))",
-                    maxWidth: "clamp(280px, 48vw, 520px)",
-                    alignSelf: "center",
-                    marginTop: "clamp(10px, 2vh, 30px)",
-                }}
-            >
-                {levelsOnPage.map((lv) => {
-                    const isLocked = lv > 0 && !completedLevels.includes(lv - 1);
-                    return (
-                        <LevelCard
-                            key={lv}
-                            num={lv + 1}
-                            locked={isLocked}
-                            onClick={() => !isLocked && onPlay(lv)}
-                        />
-                    );
-                })}
+            <div className="grid-wrapper" style={{
+                flexGrow: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                zIndex: 10
+            }}>
+                <div
+                    className="level-grid"
+                    style={{
+                        /* 4 fixed columns: Row1→1-4, Row2→5-8, Row3→9-12 */
+                        gridTemplateColumns: "repeat(4, minmax(clamp(60px, 7vw, 100px), 1fr))",
+                        maxWidth: "clamp(280px, 48vw, 520px)",
+                        width: "100%",
+                        alignSelf: "center",
+                    }}
+                >
+                    {levelsOnPage.map((lv) => {
+                        const isLocked = lv > 0 && !completedLevels.includes(lv - 1);
+                        return (
+                            <LevelCard
+                                key={lv}
+                                num={lv + 1}
+                                locked={isLocked}
+                                onClick={() => !isLocked && onPlay(lv)}
+                            />
+                        );
+                    })}
+                </div>
             </div>
 
             {/* Pagination */}
-            <div style={{
+            <div className="mobile-margin" style={{
                 display: "flex", gap: "clamp(12px, 2vw, 28px)",
                 alignItems: "center", zIndex: 10,
-                marginTop: "clamp(30px, 4vh, 60px)",
+                marginTop: "auto",
+                paddingTop: "clamp(10px, 2vh, 20px)",
+                marginBottom: "clamp(14px, 2.5vh, 28px)",
                 flexShrink: 0
             }}>
                 <button
@@ -215,7 +185,7 @@ function LevelCard({ num, locked, onClick }) {
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
                 ) : (
-                    <span style={{
+                    <span className="level-num" style={{
                         fontSize: "clamp(14px, 2vw, 26px)",
                         fontWeight: "bold",
                         color: hover ? "#FFF" : "#DAA520",

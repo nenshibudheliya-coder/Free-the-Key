@@ -7,5 +7,18 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5175,
+  },
+  build: {
+    target: 'esnext',
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        }
+      }
+    }
   }
 })

@@ -1,4 +1,4 @@
-{ /* BORAD LEVELS PAGE */ }
+/* BOARD LEVELS PAGE */
 
 import { useState, useCallback, useEffect, useRef } from "react";
 
@@ -6,537 +6,11 @@ const COLS = 6;
 const ROWS = 6;
 const GAP = 3;
 
-{/* ALL LEVELS */ }
-export const LEVELS = [
-    {
-        level: 1,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 0, length: 2, isHorizontal: false },
-            { id: "e", row: 4, col: 2, length: 2, isHorizontal: false }, // Moved away from Key overlap at 2,2
-            { id: "f", row: 1, col: 5, length: 3, isHorizontal: false },
-            // { id: "g", row: 3, col: 0, length: 3, isHorizontal: true },
-            { id: "h", row: 4, col: 1, length: 2, isHorizontal: false },
-            { id: "i", row: 4, col: 3, length: 2, isHorizontal: true },
-            { id: "j", row: 5, col: 3, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 2,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
-            { id: "b", row: 0, col: 1, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 1, col: 4, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 0, length: 2, isHorizontal: true },
-            { id: "f", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "g", row: 5, col: 3, length: 3, isHorizontal: true },
-
-        ],
-    },
-    {
-        level: 3,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 3, isHorizontal: false },
-            { id: "c", row: 1, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 4, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "g", row: 5, col: 2, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 4,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "c", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "d", row: 5, col: 0, length: 3, isHorizontal: true },
-            { id: "e", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "f", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "g", row: 2, col: 5, length: 3, isHorizontal: false },
-            { id: "h", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "i", row: 3, col: 4, length: 2, isHorizontal: false },
-            { id: "j", row: 5, col: 4, length: 2, isHorizontal: true },
-        ],
-    },
-    {
-        level: 5,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 2, col: 3, length: 3, isHorizontal: false },
-            { id: "b", row: 3, col: 1, length: 2, isHorizontal: true },
-            { id: "c", row: 3, col: 5, length: 3, isHorizontal: false },
-            { id: "d", row: 4, col: 1, length: 2, isHorizontal: false },
-            { id: "e", row: 5, col: 2, length: 2, isHorizontal: true },
-        ],
-    },
-    {
-        level: 6,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 3, isHorizontal: false },
-            { id: "d", row: 1, col: 3, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 0, length: 2, isHorizontal: true },
-            { id: "f", row: 3, col: 2, length: 3, isHorizontal: false },
-            { id: "g", row: 4, col: 4, length: 2, isHorizontal: true },
-            // { id: "h", row: 5, col: 1, length: 3, isHorizontal: true },
-        ]
-    },
-    {
-        level: 7,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "c", row: 3, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 3, col: 3, length: 3, isHorizontal: true },
-            { id: "e", row: 4, col: 5, length: 2, isHorizontal: false },
-            { id: "f", row: 5, col: 2, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 8,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "c", row: 0, col: 5, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 0, length: 3, isHorizontal: false },
-            { id: "e", row: 1, col: 4, length: 3, isHorizontal: false },
-            { id: "f", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "h", row: 4, col: 0, length: 2, isHorizontal: false },
-            { id: "i", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "j", row: 5, col: 4, length: 2, isHorizontal: true },
-        ],
-    },
-    {
-        level: 9,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 3, isHorizontal: false },
-            { id: "b", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 2, length: 3, isHorizontal: true },
-            { id: "f", row: 4, col: 0, length: 2, isHorizontal: false },
-            { id: "g", row: 5, col: 1, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 10,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
-            // { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 3, length: 2, isHorizontal: false },
-            { id: "e", row: 3, col: 0, length: 2, isHorizontal: true },
-            { id: "f", row: 4, col: 0, length: 2, isHorizontal: false },
-            { id: "g", row: 3, col: 2, length: 2, isHorizontal: false },
-            { id: "h", row: 2, col: 3, length: 3, isHorizontal: false },
-            { id: "i", row: 1, col: 4, length: 3, isHorizontal: false },
-            { id: "j", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "k", row: 5, col: 3, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 11,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 2, isHorizontal: false },
-            { id: "e", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "f", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "g", row: 3, col: 2, length: 2, isHorizontal: true },
-            { id: "h", row: 4, col: 3, length: 2, isHorizontal: false },
-        ]
-    },
-    {
-        level: 12,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "f", row: 2, col: 4, length: 3, isHorizontal: false },
-            { id: "g", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "h", row: 3, col: 0, length: 3, isHorizontal: false },
-            { id: "i", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
-        ]
-    },
-    {
-        level: 13,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "e", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "f", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "g", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "i", row: 4, col: 3, length: 2, isHorizontal: false },
-            { id: "j", row: 2, col: 5, length: 3, isHorizontal: false },
-            { id: "k", row: 5, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 14,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 3, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "c", row: 1, col: 2, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 4, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 2, length: 2, isHorizontal: false },
-            { id: "f", row: 2, col: 3, length: 2, isHorizontal: false },
-            { id: "g", row: 3, col: 0, length: 2, isHorizontal: true },
-            { id: "h", row: 3, col: 4, length: 2, isHorizontal: true },
-            { id: "i", row: 4, col: 0, length: 2, isHorizontal: true },
-            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 3, length: 3, isHorizontal: true },
-            { id: "l", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "m", row: 5, col: 3, length: 3, isHorizontal: true },
-        ],
-    },
-    {
-        level: 15,
-        pieces: [
-            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "c", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "d", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 2, length: 2, isHorizontal: true },
-            { id: "g", row: 2, col: 4, length: 2, isHorizontal: false },
-            { id: "h", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "i", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "j", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 16,
-        pieces: [
-            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 1, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 1, col: 2, length: 2, isHorizontal: true },
-            { id: "g", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "h", row: 2, col: 2, length: 3, isHorizontal: false },
-            { id: "i", row: 3, col: 3, length: 3, isHorizontal: true },
-            { id: "j", row: 5, col: 0, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 17,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: true },
-            { id: "c", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 4, length: 2, isHorizontal: false },
-            { id: "e", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "f", row: 3, col: 0, length: 3, isHorizontal: true },
-            { id: "g", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "h", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "i", row: 4, col: 3, length: 2, isHorizontal: true },
-            { id: "j", row: 5, col: 3, length: 2, isHorizontal: true },
-        ],
-    },
-    {
-        level: 18,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 1, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 2, length: 3, isHorizontal: false },
-            { id: "d", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 3, length: 3, isHorizontal: true },
-            { id: "f", row: 5, col: 0, length: 3, isHorizontal: true },
-            { id: "g", row: 4, col: 4, length: 2, isHorizontal: false },
-        ],
-    },
-    {
-        level: 19,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 3, isHorizontal: false },
-            { id: "b", row: 0, col: 1, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 3, col: 2, length: 2, isHorizontal: false },
-            { id: "e", row: 3, col: 3, length: 3, isHorizontal: true },
-            { id: "f", row: 5, col: 2, length: 3, isHorizontal: true },
-            { id: "g", row: 4, col: 5, length: 2, isHorizontal: false },
-        ],
-    },
-    {
-        level: 20,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 3, isHorizontal: false },
-            { id: "b", row: 0, col: 4, length: 2, isHorizontal: true },
-
-            { id: "c", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "d", row: 3, col: 1, length: 3, isHorizontal: true },
-
-            { id: "e", row: 3, col: 4, length: 2, isHorizontal: false },
-            { id: "f", row: 4, col: 0, length: 2, isHorizontal: true },
-
-            { id: "g", row: 5, col: 2, length: 3, isHorizontal: true },
-        ]
-    },
-    {
-        level: 21,
-        pieces: [
-            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 4, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 2, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 0, length: 3, isHorizontal: false },
-            { id: "g", row: 5, col: 1, length: 2, isHorizontal: true },
-            { id: "h", row: 4, col: 3, length: 2, isHorizontal: false },
-            { id: "i", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "j", row: 3, col: 3, length: 2, isHorizontal: true },
-            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "l", row: 5, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 22,
-        pieces: [
-            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 1, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 3, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 2, length: 2, isHorizontal: true },
-            { id: "e", row: 1, col: 4, length: 3, isHorizontal: false },
-            { id: "f", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "g", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "h", row: 2, col: 1, length: 3, isHorizontal: false },
-            { id: "i", row: 3, col: 3, length: 2, isHorizontal: false },
-            { id: "j", row: 3, col: 2, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "l", row: 5, col: 1, length: 2, isHorizontal: true },
-            { id: "m", row: 5, col: 3, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 23,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 1, length: 3, isHorizontal: true },
-            { id: "c", row: 1, col: 2, length: 2, isHorizontal: true },
-            { id: "d", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "e", row: 2, col: 2, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 0, length: 2, isHorizontal: true },
-            { id: "g", row: 4, col: 0, length: 3, isHorizontal: true },
-            { id: "h", row: 5, col: 0, length: 3, isHorizontal: true },
-            { id: "i", row: 3, col: 3, length: 3, isHorizontal: false },
-            { id: "j", row: 4, col: 4, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
-        ]
-    },
-    {
-        level: 24,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "c", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "e", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "f", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "g", row: 4, col: 1, length: 2, isHorizontal: true },
-            { id: "h", row: 5, col: 0, length: 3, isHorizontal: true },
-        ]
-    },
-    {
-        level: 25,
-        pieces: [
-            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 4, length: 2, isHorizontal: false },
-            { id: "d", row: 2, col: 1, length: 2, isHorizontal: false },
-            { id: "e", row: 3, col: 2, length: 2, isHorizontal: true },
-            { id: "f", row: 3, col: 4, length: 2, isHorizontal: false },
-            { id: "g", row: 4, col: 1, length: 3, isHorizontal: true },
-        ]
-    },
-    {
-        level: 26,
-        pieces: [
-            { id: "key", row: 2, col: 0, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: false },
-            { id: "b", row: 1, col: 1, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 3, length: 3, isHorizontal: true },
-            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "e", row: 2, col: 2, length: 2, isHorizontal: false },
-            { id: "f", row: 2, col: 5, length: 3, isHorizontal: false },
-            { id: "g", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "h", row: 4, col: 3, length: 2, isHorizontal: true },
-            { id: "i", row: 5, col: 3, length: 3, isHorizontal: true },
-        ]
-    },
-    {
-        level: 27,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "c", row: 0, col: 3, length: 3, isHorizontal: false },
-            { id: "d", row: 1, col: 0, length: 3, isHorizontal: false },
-            { id: "e", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "f", row: 5, col: 3, length: 3, isHorizontal: true },
-        ]
-
-    },
-    {
-        level: 28,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: true },
-            { id: "c", row: 1, col: 0, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 3, length: 3, isHorizontal: false },
-            { id: "e", row: 4, col: 0, length: 2, isHorizontal: false },
-            { id: "f", row: 1, col: 4, length: 2, isHorizontal: true },
-            { id: "g", row: 3, col: 4, length: 2, isHorizontal: true },
-            { id: "h", row: 3, col: 1, length: 2, isHorizontal: false },
-            { id: "i", row: 4, col: 2, length: 2, isHorizontal: true },
-            { id: "j", row: 5, col: 1, length: 3, isHorizontal: true },
-            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
-        ]
-    },
-    {
-        level: 29,
-        pieces: [
-            { id: "key", row: 2, col: 3, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 3, isHorizontal: true },
-            { id: "b", row: 0, col: 5, length: 3, isHorizontal: false },
-            { id: "c", row: 1, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 3, length: 2, isHorizontal: true },
-            { id: "e", row: 3, col: 2, length: 2, isHorizontal: false },
-            { id: "f", row: 3, col: 3, length: 2, isHorizontal: false },
-            { id: "g", row: 3, col: 4, length: 2, isHorizontal: true },
-            { id: "h", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "i", row: 5, col: 2, length: 3, isHorizontal: true },
-        ]
-
-    },
-    {
-        level: 30,
-        pieces: [
-            { id: "key", row: 2, col: 2, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 2, isHorizontal: true },
-            { id: "c", row: 1, col: 1, length: 2, isHorizontal: false },
-            { id: "d", row: 2, col: 0, length: 2, isHorizontal: false },
-            { id: "e", row: 3, col: 1, length: 2, isHorizontal: true },
-            { id: "f", row: 4, col: 0, length: 3, isHorizontal: true },
-            { id: "g", row: 5, col: 0, length: 2, isHorizontal: true },
-            { id: "h", row: 2, col: 4, length: 2, isHorizontal: false },
-            { id: "i", row: 4, col: 4, length: 2, isHorizontal: false },
-
-        ]
-    },
-    {
-        level: 31,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 0, length: 2, isHorizontal: true },
-            { id: "b", row: 1, col: 0, length: 2, isHorizontal: true },
-            { id: "c", row: 0, col: 2, length: 2, isHorizontal: false },
-            { id: "d", row: 0, col: 4, length: 2, isHorizontal: true },
-            { id: "e", row: 1, col: 5, length: 3, isHorizontal: false },
-            { id: "f", row: 2, col: 4, length: 2, isHorizontal: false },
-            { id: "g", row: 2, col: 0, length: 3, isHorizontal: false },
-            { id: "h", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "i", row: 4, col: 1, length: 2, isHorizontal: false },
-            { id: "j", row: 4, col: 3, length: 2, isHorizontal: false },
-            { id: "k", row: 4, col: 4, length: 2, isHorizontal: true },
-            { id: "l", row: 5, col: 4, length: 2, isHorizontal: true },
-        ]
-    },
-    {
-        level: 32,
-        pieces: [
-            { id: "key", row: 2, col: 1, length: 2, isHorizontal: true, isKey: true },
-
-            { id: "a", row: 0, col: 1, length: 2, isHorizontal: false },
-            { id: "b", row: 0, col: 3, length: 3, isHorizontal: true },
-            { id: "c", row: 1, col: 0, length: 2, isHorizontal: false },
-            { id: "d", row: 1, col: 3, length: 2, isHorizontal: false },
-            { id: "e", row: 1, col: 4, length: 3, isHorizontal: false },
-            { id: "f", row: 2, col: 5, length: 2, isHorizontal: false },
-            { id: "g", row: 3, col: 0, length: 2, isHorizontal: false },
-            { id: "h", row: 3, col: 1, length: 3, isHorizontal: true },
-            { id: "i", row: 4, col: 2, length: 2, isHorizontal: false },
-            { id: "j", row: 5, col: 3, length: 2, isHorizontal: true },
-            { id: "k", row: 4, col: 5, length: 2, isHorizontal: false },
-
-        ]
-    },
-];
+import { LEVELS } from "../data/levels.js";
 
 
-{/* board ma kai cell par kai piece che e batave che */ }
+
+/* board ma kai cell par kai piece che e batave che */
 function buildOccupied(pieces) {
     const occ = {};
     for (const p of pieces) {
@@ -549,9 +23,9 @@ function buildOccupied(pieces) {
     return occ;
 }
 
-{/* move karva devu ke nai e chech kare che */ }
+/* move karva devu ke nai e chech kare che */
 function canMove(piece, delta, pieces) {
-    const occ = buildOccupied(pieces); {/* call */ }
+    const occ = buildOccupied(pieces); /* call */
     for (let i = 0; i < piece.length; i++) {
         const r = piece.isHorizontal ? piece.row : piece.row + i;
         const c = piece.isHorizontal ? piece.col + i : piece.col;
@@ -596,7 +70,7 @@ const STONE_PALETTES = [
     { face: "#a87850", top: "#c89870", side: "#785030", crack: "#583020" },
 ];
 
-{ /* key icon */ }
+/* key icon */
 function KeySVGIcon({ size }) {
     const s = size || 32;
     return (
@@ -625,7 +99,7 @@ function KeySVGIcon({ size }) {
     );
 }
 
-{ /* stone block */ }
+/* stone block */
 function StoneBlockSVG({ piece, isActive, onPointerDown, cell }) {
     const CELL = cell;
     const w = piece.isHorizontal ? piece.length * CELL + (piece.length - 1) * GAP : CELL;
@@ -922,6 +396,21 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                     filter: blur(20px); pointer-events: none;
                 }
                 * { box-sizing: border-box; }
+
+                @media (max-width: 480px) {
+                    .mobile-home-btn {
+                        position: absolute !important;
+                        top: 10px !important;
+                        left: 10px !important;
+                        z-index: 100;
+                    }
+                    .mobile-reset-btn {
+                        position: absolute !important;
+                        top: 10px !important;
+                        right: 10px !important;
+                        z-index: 100;
+                    }
+                }
             `}</style>
 
             {/* Header Header with Home, Stats, and Reset */}
@@ -934,19 +423,39 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                 marginBottom: isSmall ? 12 : 16,
                 zIndex: 50
             }}>
-                <Btn onClick={onHome} small={isSmall}>⇠ Home</Btn>
+                <span className="mobile-home-btn">
+                    <Btn onClick={onHome} small={isSmall}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            {/* Home */}
+                        </span>
+                    </Btn>
+                </span>
 
                 <div style={{ textAlign: "center", flex: 1 }}>
                     <p style={{
                         color: "#A87850", margin: 0, fontSize: isSmall ? 15 : 16,
-                        letterSpacing: isSmall ? 2 : 4, textTransform: "uppercase",
+                        letterSpacing: isSmall ? 4 : 4, textTransform: "uppercase",
                         fontWeight: "bold"
                     }}>
                         Level {levelIdx + 1} &nbsp;•&nbsp; Moves: {moves}
                     </p>
                 </div>
 
-                <Btn onClick={() => loadLevel(levelIdx)} small={isSmall}>↺ Reset</Btn>
+                <span className="mobile-reset-btn">
+                    <Btn onClick={() => loadLevel(levelIdx)} small={isSmall}>
+                        <span style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                <path d="M3 3v5h5"></path>
+                            </svg>
+                            {/* Reset */}
+                        </span>
+                    </Btn>
+                </span>
             </div>
 
             {/* Temple border frame */}
@@ -1079,7 +588,7 @@ export default function FreeTheKey({ levelIdx: initialLevelIdx = 0, onHome, onWi
                         textAlign: "center",
                         boxShadow: "0 0 80px #DAA52055",
                         animation: "popIn 0.45s cubic-bezier(0.175,0.885,0.32,1.275), winGlow 2s ease-in-out infinite 0.5s",
-                        maxWidth: "85vw",
+                        maxWidth: "95vw",
                     }}>
                         <div style={{ fontSize: isSmall ? 36 : 48, marginBottom: 6 }}>
                             <KeySVGIcon size={isSmall ? 40 : 56} />

@@ -1,0 +1,17 @@
+{
+  "name": "Free The Key",
+  "short_name": "FreeKey",
+  "description": "An addictive puzzle game where you slide blocks to escape the temple.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1c0800",
+  "theme_color": "#DAA520",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait"
+}

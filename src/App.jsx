@@ -1,6 +1,27 @@
 import React, { useState, useEffect, Component } from 'react'
 import SideAdsLayout from "./Components/SideAdsLayout"; // Google Ads //
 
+import HomePage from './Components/home.jsx';
+import LevelSelect from './Components/LevelSelect.jsx';
+import FreeTheKey from './Components/free.jsx';
+
+// Mini loading component (Kept for reference if needed elsewhere)
+const TempleLoading = () => (
+  <div style={{
+    height: '100vh', width: '100vw', display: 'flex', alignItems: 'center',
+    justifyContent: 'center', background: '#1c0800', color: '#DAA520',
+    fontFamily: 'Georgia, serif'
+  }}>
+    <div style={{ textAlign: 'center' }}>
+      {/* <h2 style={{ letterSpacing: '4px', animation: 'pulse 1.5s infinite' }}>ENTERING TEMPLE...</h2> */}
+    </div>
+  </div>
+);
+
+import './App.css'
+import { LEVELS } from './data/levels.js'
+
+
 class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
@@ -20,11 +41,6 @@ class ErrorBoundary extends Component {
     return this.props.children;
   }
 }
-
-import HomePage from './Components/home.jsx'
-import LevelSelect from './Components/LevelSelect.jsx'
-import FreeTheKey, { LEVELS } from './Components/free.jsx'
-import './App.css'
 
 function App() {
   const [screen, setScreen] = useState('home'); // 'home' | 'levelSelect' | 'game'
@@ -65,6 +81,7 @@ function App() {
     <SideAdsLayout showAds={true}> {/* Google Ads */}
       <ErrorBoundary>
         <style>{`
+        @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
         @media (max-width: 900px) and (orientation: landscape) {
           .global-landscape-warning {
             display: flex !important;
@@ -94,6 +111,7 @@ function App() {
         </div>
 
         <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
+          {/* Instant loading without Suspense */}
           {screen === 'home' && (
             <HomePage onStart={() => setScreen('levelSelect')} />
           )}
