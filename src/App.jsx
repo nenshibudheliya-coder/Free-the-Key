@@ -1,9 +1,9 @@
-import React, { useState, useEffect, Component } from 'react'
+import React, { useState, useEffect, Component, Suspense, lazy } from 'react'
 import SideAdsLayout from "./Components/SideAdsLayout"; // Google Ads //
 
 import HomePage from './Components/home.jsx';
-import LevelSelect from './Components/LevelSelect.jsx';
-import FreeTheKey from './Components/free.jsx';
+const LevelSelect = lazy(() => import('./Components/LevelSelect.jsx'));
+const FreeTheKey = lazy(() => import('./Components/free.jsx'));
 
 // Mini loading component (Kept for reference if needed elsewhere)
 const TempleLoading = () => (
@@ -116,29 +116,31 @@ function App() {
             <HomePage onStart={() => setScreen('levelSelect')} />
           )}
 
-          {screen === 'levelSelect' && (
-            <LevelSelect
-              onPlay={startLevel}
-              onBack={() => setScreen('home')}
-              unlockedCount={unlockedCount}
-              completedLevels={completedLevels}
-            />
-          )}
+          <Suspense fallback={<TempleLoading />}>
+            {screen === 'levelSelect' && (
+              <LevelSelect
+                onPlay={startLevel}
+                onBack={() => setScreen('home')}
+                unlockedCount={unlockedCount}
+                completedLevels={completedLevels}
+              />
+            )}
 
-          {screen === 'game' && (
-            <FreeTheKey
-              levelIdx={levelIdx}
-              onHome={() => setScreen('levelSelect')}
-              onNext={() => {
-                handleWin(levelIdx);
-                if (levelIdx < LEVELS.length - 1) {
-                  setLevelIdx(prev => prev + 1);
-                } else {
-                  setScreen('levelSelect');
-                }
-              }}
-            />
-          )}
+            {screen === 'game' && (
+              <FreeTheKey
+                levelIdx={levelIdx}
+                onHome={() => setScreen('levelSelect')}
+                onNext={() => {
+                  handleWin(levelIdx);
+                  if (levelIdx < LEVELS.length - 1) {
+                    setLevelIdx(prev => prev + 1);
+                  } else {
+                    setScreen('levelSelect');
+                  }
+                }}
+              />
+            )}
+          </Suspense>
         </div>
       </ErrorBoundary>
     </SideAdsLayout> // Google Ads //
