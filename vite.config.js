@@ -19,10 +19,8 @@ export default defineConfig({
     cssMinify: true,
     assetsInlineLimit: 100000000, // Inline all assets
     chunkSizeWarningLimit: 100000000,
-    rollupOptions: {
-      output: {
-        inlineDynamicImports: true, // Flatten dynamic imports into the single file
-      },
-    },
+    reportCompressedSize: false, // Speed up build
+    modulePreload: false, // Not needed for single file
+    codeSplitting: false, // NEW: Replaces deprecated inlineDynamicImports
   },
 })
