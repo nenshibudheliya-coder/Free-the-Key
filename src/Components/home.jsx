@@ -61,6 +61,7 @@ export default function HomePage({ onStart }) {
                 {/* Central Medallion Golden circle */}
                 <div style={{ position: "relative", width: "clamp(120px, 25vh, 220px)", height: "clamp(120px, 25vh, 220px)" }}>
                     <svg viewBox="0 0 100 100" style={{ width: "100%", height: "100%", animation: "medalRotate 30s linear infinite" }}>
+                        <title>Ancient Golden Medallion</title>
                         <defs>
                             <linearGradient id="medalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stopColor="#FFD700" />
@@ -101,6 +102,7 @@ export default function HomePage({ onStart }) {
                 {/* Start Button */}
                 <button
                     onClick={onStart}
+                    aria-label="Start Game"
                     onMouseEnter={() => setHover(true)}
                     onMouseLeave={() => setHover(false)}
                     style={{
