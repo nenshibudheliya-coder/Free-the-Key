@@ -7,14 +7,33 @@
   <link rel="apple-touch-icon" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free The Key</title>
-  <meta name="description" content="Free The Key - A challenging ancient temple escape puzzle game. Slide blocks to unlock the hidden key and find your way out." />
+  <meta name="description"
+    content="Free The Key - A challenging ancient temple escape puzzle game. Slide blocks to unlock the hidden key and find your way out." />
   <meta name="theme-color" content="#DAA520" />
-  
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
 
-  <!--Google Ads-->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
-    crossorigin="anonymous"></script>
+  <!-- Google Ads Loader (Delayed for Lighthouse audit) -->
+  <script>
+    (function() {
+      var adsLoaded = false;
+      function loadAds() {
+        if (adsLoaded) return;
+        adsLoaded = true;
+        var script = document.createElement('script');
+        script.async = true;
+        script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX";
+        script.crossOrigin = "anonymous";
+        document.head.appendChild(script);
+        
+        // Remove listeners
+        window.removeEventListener('scroll', loadAds);
+        window.removeEventListener('touchstart', loadAds);
+        window.removeEventListener('mousedown', loadAds);
+      }
+      window.addEventListener('scroll', loadAds, { passive: true });
+      window.addEventListener('touchstart', loadAds, { passive: true });
+      window.addEventListener('mousedown', loadAds, { passive: true });
+    })();
+  </script>
 
 </head>
 
