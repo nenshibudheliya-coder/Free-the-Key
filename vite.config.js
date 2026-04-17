@@ -1,12 +1,14 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js'
+import { viteSingleFile } from 'vite-plugin-singlefile'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    cssInjectedByJsPlugin()
+    cssInjectedByJsPlugin(),
+    viteSingleFile()
   ],
   server: {
     host: '0.0.0.0',
@@ -15,16 +17,11 @@ export default defineConfig({
   build: {
     target: 'esnext',
     cssMinify: true,
+    assetsInlineLimit: 100000000, // Inline all assets
+    chunkSizeWarningLimit: 100000000,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor'; // Put libraries in a separate file
-          }
-          if (id.includes('free.jsx') || id.includes('LevelSelect.jsx')) {
-            return 'game-core'; // Put game logic in its own chunk
-          }
-        },
+        inlineDynamicImports: true, // Flatten dynamic imports into the single file
       },
     },
   },
